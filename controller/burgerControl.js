@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router();
 
-const burger = require("../models/burgers.js")
+const burger = require("../model/burger.js")
 
 //creating route-switchboard to forward CRUD and navigation
 
@@ -57,3 +57,4 @@ router.delete("/api/burger/:id", function(req, res) {
 });
 
 module.exports = router;
+// this export will be required by the server.js file

@@ -7,7 +7,7 @@ const connection = mysql.createConnection(
     port: 3306,
     user: "root",
     password: "password",
-    database: "cat_db"
+    database: "hamburger_db"
 });
 
 connection.connect(function(err) {
@@ -19,3 +19,4 @@ connection.connect(function(err) {
 });
 
 module.exports = connection;
+//the orm file (Object-relational mapping file) will require this. Which makes a lot of sense.
