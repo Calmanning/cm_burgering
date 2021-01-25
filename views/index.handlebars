@@ -3,5 +3,36 @@
 <h3>Here are some burgers for you</h3>
 {{!-- Realized I need to put this on hold I should do the ajax (js) calls first  --}}
 <ul>
-    
+    {{#each burgers}}
+        {{#unless eaten}}
+            {{> burgers/burger-block eaten=true}}
+        {{/unless}}
+    {{/each}}
 </ul>
+
+<h3>Burgs you have eaten</h3>
+
+<ul>
+    {{#each burgers}}
+        {{#if eaten}}
+            {{> burgers/burger-block eaten=false}}
+        {{/if}}
+    {{/each}}
+</ul>
+
+<h2>Want to make your own burger?</h2>
+
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="burg">Burger Name:</label>
+        <input type="text" id="burg" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="eaten">Eaten yet?</label><br>
+        <input type="radio" name="eaten" value="1" checked>oh. so good.<br>
+        <input type="radio" name="eaten" value="0"> Make it again.
+    </div>
+    <button type="submit">add the burger</button>
+</form>

@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router();
 
-const burger = require("../model/burger.js")
+const burger = require("../models/burger.js")
 
 //creating route-switchboard to forward CRUD and navigation
 
