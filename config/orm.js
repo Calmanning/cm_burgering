@@ -3,7 +3,7 @@ const connection = require("./DB_connect");
 function qMarks(num){
     const array = [];
 
-    for (let i; i<num; i++){
+    for (let i = 0; i<num; i++){
         array.push("?");
     }
 
@@ -15,9 +15,9 @@ function objToSql(obj) {
     const array = [];
 //a for-in loop to loop through keys and push the vaule pair as a string into the array
 for (let key in obj) {
-    let vaule = obj[key];
-    //checking for hidden properties
-    if  (Object.hasOwnProperty.call(ob, key)) {
+    let value = obj[key];
+    
+    if(Object.hasOwnProperty.call(obj, key)) {
         //if the string has spaces, let's add quotes
         if(typeof value === "string" && value.indexOf(" ") >=0) {
             value ="'"+ value + "'";
@@ -44,13 +44,13 @@ const orm = {
         });
     },
     
-    create: function(table, cols, values, cb) {
-        const queryString = "INSERT INTO " + table;
+    create: function(table, col, values, cb) {
+        let queryString = "INSERT INTO " + table;
         
         //concatenating this string to achieve the proper formatting
 
         queryString += " (";
-        queryString += cols.tostring();
+        queryString += col.toString();
         queryString += ") ";
         queryString += "VALUES (";
         queryString += qMarks(values.length);
@@ -67,14 +67,14 @@ const orm = {
     },
 
     update: function(table, objColValues, condition, cb) {
-        const queryString = "UPDATE " + table;
+        let queryString = "UPDATE " + table;
 
        queryString += " SET ";
-       queryString += objToSql(objColValues);;
-       queryString += "WHERE ";
+       queryString += objToSql(objColValues);
+       queryString += " WHERE ";
        queryString += condition;
 
-        console.log(queryString);
+        console.log("string in the orm: " + queryString);
 
         connection.query(queryString, function(err, result) {
             if(err){
@@ -85,14 +85,14 @@ const orm = {
     },
 
     delete: function(table, condition, cb) {
-        const queryString = "DELETE FROM " + table;
+        let queryString = "DELETE FROM " + table;
 
-        queryString += "WHERE ";
+        queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
 
-        conneection.query(queryString, function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }
