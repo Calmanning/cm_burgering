@@ -1,9 +1,9 @@
-
 $(function() {
     $(".change-eaten").on("click", function(event) {
+        event.preventDefault()
         const id = $(this).data("id");
-        const newEat = $(this).data("newEat");
-
+        const newEat = $(this).data("neweat");
+        console.log("burger, line 4 consolelog NewEat:" + newEat)
         const newEatenState = {
             eaten: newEat
         };
@@ -12,8 +12,7 @@ $(function() {
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: newEatenState
-        }).then(
-            function() {
+        }).then(function() {
                 console.log("Omnomnom", newEat);
                 location.reload()
                 // we're relaoding the page so we can reload the list
@@ -27,11 +26,11 @@ $(function() {
 
         const newBurger = {
             name: $("#burg").val().trim(),
-            eaten: $("[name=eaten]:checked")
+            eaten: $("[name=eaten]:checked").val().trim()
         };
 
         //sending a POST with that sweet burger info
-        $.ajax("/api/cats", {
+        $.ajax("/api/burgers", {
             type: "POST",
             data:newBurger
         }).then(
@@ -44,10 +43,11 @@ $(function() {
 
     //time to delete burgs
     $(".delete-burg").on("click", function(event) {
+        console.log("deleted?")
         const id = $(this).data("id");
 
         //and the request to delete it
-        $.ajax("/api/cats/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "DELETE"
         }).then(function() {
             console.log("byebye burger. Burg Deleted", id);
@@ -61,3 +61,4 @@ $(function() {
 
     
 })
+

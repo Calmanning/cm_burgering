@@ -1,7 +1,7 @@
 <h1>Hamble-Burgers</h1>
 
 <h3>Here are some burgers for you</h3>
-{{!-- Realized I need to put this on hold I should do the ajax (js) calls first  --}}
+
 <ul>
     {{#each burgers}}
         {{#unless eaten}}
@@ -31,7 +31,7 @@
 
     <div class="form-group">
         <label for="eaten">Eaten yet?</label><br>
-        <input type="radio" name="eaten" value="1" checked>oh. so good.<br>
+        <input type="radio" name="eaten" value="1" checked>Yea. I ate it already, so what.<br>
         <input type="radio" name="eaten" value="0"> Make it again.
     </div>
     <button type="submit">add the burger</button>

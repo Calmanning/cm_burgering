@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/api/burger", function(req, res){
+router.post("/api/burgers", function(req, res){
     burger.create([
         "name", "eaten"
     ], [
@@ -26,14 +26,12 @@ router.post("/api/burger", function(req, res){
     });
 });
 //updating a specific burger (and by that I mean eating it.)
-router.put("/api/burger/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     const condition = "id = " +req.params.id;
 
-    console.log("condition ", condition);
+    console.log("condition: " + condition);
 
-    burger.update({
-        eaten: req.body.eaten
-    }, condition, function(result) {
+    burger.update({eaten: req.body.eaten},condition, function(result) {
         if(result.changedRows === 0) {
             return res.status(404).end();
         } else {
@@ -42,8 +40,8 @@ router.put("/api/burger/:id", function(req, res) {
     });
 });
 
-router.delete("/api/burger/:id", function(req, res) {
-        const condition = "id " + req.params.id;
+router.delete("/api/burgers/:id", function(req, res) {
+        const condition = "id = " + req.params.id;
 
         console.log("condition " , condition);
     
