@@ -1,26 +1,33 @@
-<h1>Hamble-Burgers</h1>
+<h1>HAMBLE-BURGERS</h1>
 
-<h3>Here are some burgers for you</h3>
+<h3 class="intro">Hope you wanted some hamburgers...</h3>
+<h5>(and only hamburgers)</h5>
+<h3>Here are some burgers for you!</h3>
 
-<ul>
-    {{#each burgers}}
-        {{#unless eaten}}
-            {{> burgers/burger-block eaten=true}}
-        {{/unless}}
-    {{/each}}
+
+<ul id="fresh">
+    <div id="freshlist">
+        {{#each burgers}}
+                {{#unless eaten}}
+                    {{> burgers/burger-block eaten=true}}
+                {{/unless}}
+            {{/each}}
+    </div>
 </ul>
 
 <h3>Burgs you have eaten</h3>
 
-<ul>
+<ul id="blech">
+    <div id="blechlist">
     {{#each burgers}}
         {{#if eaten}}
             {{> burgers/burger-block eaten=false}}
         {{/if}}
     {{/each}}
+    </div>
 </ul>
 
-<h2>Want to make your own burger?</h2>
+<h2 class="intro">Want to make your own burger?</h2>
 
 <form class="create-form">
 
@@ -32,7 +39,7 @@
     <div class="form-group">
         <label for="eaten">Eaten yet?</label><br>
         <input type="radio" name="eaten" value="1" checked>Yea. I ate it already, so what.<br>
-        <input type="radio" name="eaten" value="0"> Make it again.
+        <input type="radio" name="eaten" value="0"> Make me new one.
     </div>
     <button type="submit">add the burger</button>
 </form>
