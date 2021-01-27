@@ -31,6 +31,8 @@ npm install express express-handlebars mysql
 
 Have you ever wanted to imaginarily eat and creates hamburgers? This app will allow the use to create hamburgers, eat those hambergers, and delete those hamburgers. And, if they wanted, they could remake those burgers and eat them all over again!
 
+![](./image.png)
+
 ## License
 
 This project is licensed under the None license.
